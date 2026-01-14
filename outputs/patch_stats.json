@@ -1,0 +1,22 @@
+{
+  "train": {
+    "skin": 4539,
+    "nonskin": 3064
+  },
+  "val": {
+    "skin": 581,
+    "nonskin": 350
+  },
+  "test": {
+    "skin": 651,
+    "nonskin": 458
+  },
+  "patch_size": 64,
+  "per_image_skin": 200,
+  "per_image_nonskin": 200,
+  "split": {
+    "train": 80,
+    "val": 10,
+    "test": 10
+  }
+}

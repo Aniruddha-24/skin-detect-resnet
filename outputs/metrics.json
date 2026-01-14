@@ -1,0 +1,47 @@
+{
+  "accuracy": 0.9341749323715058,
+  "precision_macro": 0.9320026814144462,
+  "recall_macro": 0.9322808712159325,
+  "f1_macro": 0.9321409502127799,
+  "classification_report": {
+    "nonskin": {
+      "precision": 0.9193899782135077,
+      "recall": 0.9213973799126638,
+      "f1-score": 0.920392584514722,
+      "support": 458.0
+    },
+    "skin": {
+      "precision": 0.9446153846153846,
+      "recall": 0.9431643625192012,
+      "f1-score": 0.9438893159108378,
+      "support": 651.0
+    },
+    "accuracy": 0.9341749323715058,
+    "macro avg": {
+      "precision": 0.9320026814144462,
+      "recall": 0.9322808712159325,
+      "f1-score": 0.9321409502127799,
+      "support": 1109.0
+    },
+    "weighted avg": {
+      "precision": 0.9341976784548258,
+      "recall": 0.9341749323715058,
+      "f1-score": 0.9341855260285826,
+      "support": 1109.0
+    }
+  },
+  "confusion_matrix": [
+    [
+      422,
+      36
+    ],
+    [
+      37,
+      614
+    ]
+  ],
+  "idx_to_class": {
+    "0": "nonskin",
+    "1": "skin"
+  }
+}
