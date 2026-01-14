@@ -11,7 +11,24 @@ from torchvision import datasets, transforms, models
 
 from sklearn.metrics import classification_report, confusion_matrix, ConfusionMatrixDisplay
 
+"""
+Module: eval.py
+Description:
+    Evaluates the trained Skin vs. Non-Skin classification model on the test set.
+    Generates a classification report, confusion matrix, and sample prediction visualization.
+"""
+
 def load_model(ckpt_path, device):
+    """
+    Loads the trained model weights and configuration.
+    
+    Args:
+        ckpt_path (str): Path to the model checkpoint (.pt file).
+        device (str): Device to load the model onto ('cpu' or 'cuda').
+        
+    Returns:
+        tuple: (model, class_map, img_size)
+    """
     ckpt = torch.load(ckpt_path, map_location=device)
     class_map = ckpt["class_map"]
     img_size = ckpt["img_size"]

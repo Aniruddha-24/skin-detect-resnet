@@ -6,10 +6,36 @@ import argparse
 import numpy as np
 from tqdm import tqdm
 
+"""
+Module: make_patches.py
+Description: 
+    Preprocesses the raw Pratheepan Dataset images and masks into smaller patches 
+    suitable for training a ResNet classifier. It balances the dataset by sampling 
+    an equal number of skin and non-skin points from each image.
+"""
+
 def ensure_dir(p):
+    """
+    Ensures that a directory exists; creates it if it doesn't.
+    
+    Args:
+        p (str): Path to the directory.
+    """
     os.makedirs(p, exist_ok=True)
 
 def crop_patch(img, cx, cy, patch_size):
+    """
+    Crops a square patch from the image centered at (cx, cy).
+    
+    Args:
+        img (numpy.ndarray): The source image.
+        cx (int): Center x-coordinate.
+        cy (int): Center y-coordinate.
+        patch_size (int): The width/height of the square patch.
+        
+    Returns:
+        numpy.ndarray or None: The cropped patch, or None if the crop is out of bounds.
+    """
     h, w = img.shape[:2]
     r = patch_size // 2
     x1, y1 = cx - r, cy - r
@@ -19,6 +45,17 @@ def crop_patch(img, cx, cy, patch_size):
     return img[y1:y2, x1:x2].copy()
 
 def sample_points(mask, label_value, n):
+    """
+    Randomly samples 'n' points from the mask where the value matches 'label_value'.
+    
+    Args:
+        mask (numpy.ndarray): The 2D binary mask.
+        label_value (int): The pixel value to sample (e.g., 255 for skin, 0 for non-skin).
+        n (int): Number of points to sample.
+        
+    Returns:
+        list: A list of (x, y) tuples.
+    """
     ys, xs = np.where(mask == label_value)
     if len(xs) == 0:
         return []

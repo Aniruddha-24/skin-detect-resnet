@@ -6,11 +6,28 @@ from PIL import Image
 import numpy as np
 import os
 
+"""
+Module: app.py
+Description:
+    Streamlit web application for identifying Skin vs. Non-Skin regions in uploaded images.
+    Provides a user-friendly interface for model inference.
+"""
+
 # Page config
 st.set_page_config(page_title="Skin Classification", page_icon="🧬")
 
 @st.cache_resource
 def load_model(ckpt_path, device):
+    """
+    Loads and caches the PyTorch model to avoid reloading on every interaction.
+    
+    Args:
+        ckpt_path (str): Path to the model checkpoint.
+        device (str): 'cuda' or 'cpu'.
+        
+    Returns:
+        tuple: (model, idx_to_class, img_size)
+    """
     if not os.path.exists(ckpt_path):
         return None, None, None
         

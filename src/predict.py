@@ -4,7 +4,24 @@ import torch.nn as nn
 from torchvision import transforms, models
 from PIL import Image
 
+"""
+Module: predict.py
+Description:
+    Command-line inference script. Takes a single image path and a model checkpoint,
+    and outputs the predicted class (Skin/Non-Skin) and probabilities.
+"""
+
 def load_model(ckpt_path, device):
+    """
+    Loads the trained model for inference.
+    
+    Args:
+        ckpt_path (str): Path to the checkpoint file.
+        device (str): Computation device.
+        
+    Returns:
+        tuple: (model, idx_to_class, img_size)
+    """
     ckpt = torch.load(ckpt_path, map_location=device)
     class_map = ckpt["class_map"]
     img_size = ckpt["img_size"]

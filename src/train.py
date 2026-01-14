@@ -9,7 +9,20 @@ import torch.nn as nn
 from torch.utils.data import DataLoader
 from torchvision import datasets, transforms, models
 
+"""
+Module: train.py
+Description:
+    Training script for the Skin vs. Non-Skin classifier.
+    Loads patched data, fine-tunes a ResNet18 model, and saves the best checkpoint.
+"""
+
 def set_seed(seed: int):
+    """
+    Sets the random seed for reproducibility across PyTorch, NumPy, and CUDA.
+    
+    Args:
+        seed (int): The seed value.
+    """
     torch.manual_seed(seed)
     torch.cuda.manual_seed_all(seed)
     np.random.seed(seed)
@@ -17,10 +30,25 @@ def set_seed(seed: int):
     torch.backends.cudnn.benchmark = False
 
 def accuracy_from_logits(logits, y):
+    """
+    Computes accuracy from raw model logits and target labels.
+    
+    Args:
+        logits (torch.Tensor): Model output of shape (N, C).
+        y (torch.Tensor): Ground truth labels of shape (N,).
+        
+    Returns:
+        float: The mean accuracy.
+    """
     preds = torch.argmax(logits, dim=1)
     return (preds == y).float().mean().item()
 
 def main():
+    """
+    Main training loop.
+    Parses arguments, sets up data loaders, model, optimizer, and executes the training process.
+    Saves training history and the best model checkpoint.
+    """
     ap = argparse.ArgumentParser()
     ap.add_argument("--data_dir", default="data/patches")
     ap.add_argument("--out_dir", default="outputs")
