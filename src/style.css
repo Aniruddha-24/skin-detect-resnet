@@ -1,0 +1,74 @@
+/* Main background */
+.stApp {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    font-family: 'Helvetica Neue', sans-serif;
+}
+
+/* Sidebar styling */
+[data-testid="stSidebar"] {
+    background-color: #ffffff;
+    border-right: 1px solid #e0e0e0;
+}
+
+/* Headings */
+h1, h2, h3 {
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+/* Custom container for main content */
+.main-container {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+/* Metric styling */
+[data-testid="stMetricValue"] {
+    font-size: 2rem !important;
+    color: #2980b9;
+}
+
+[data-testid="stMetricLabel"] {
+    font-size: 1rem !important;
+    color: #7f8c8d;
+}
+
+/* Button styling */
+.stButton>button {
+    background-color: #2980b9;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+}
+
+.stButton>button:hover {
+    background-color: #3498db;
+    color: white;
+}
+
+/* File uploader improvement */
+[data-testid="stFileUploader"] {
+    border: 2px dashed #bdc3c7;
+    border-radius: 10px;
+    padding: 1rem;
+}
+
+/* Success/Error custom styling */
+.stSuccess {
+    background-color: #d4edda;
+    color: #155724;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.stError {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-radius: 8px;
+    padding: 1rem;
+}
